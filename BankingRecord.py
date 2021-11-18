@@ -1,6 +1,6 @@
 
 class BankingRecord
-  def __int__(self, accountNumber, accountType, transactionType, transactionAmount, balance)
+  def __init__(self, accountNumber, accountType, transactionType, transactionAmount, balance)
     self.accountNumber = accountNumber
 	self.accountType = accountType
 	self.transactionType = transactionType
@@ -18,7 +18,7 @@ class BankingRecord
 	  self.accountType = _ActT
     def getTransactionType(self) 
 	  return self.transactionType
-    def petTransactionType(self, _TraT)
+    def setTransactionType(self, _TraT)
 	  self.transactionType = _TraT
     def getTransactionAmount(self)
 	  return self.transactionAmount
