@@ -14,4 +14,12 @@ class Block
    block = self.previousHash + self.timeStamp + self.nonce + data
    calculatedhash = hashlib.sha256(block.encode())
    return calculatedhash   
-   
+
+  def mineBlock(self, difficulty) 
+        target = StringUtil.getDificultyString(difficulty); 
+        while(!hash.substring( 0, difficulty).equals(target)) {
+            self.nonce++
+            self.hash = calculateHash();
+        }
+        print("Block Mined!!! : ", self.hash)
+    }
