@@ -28,4 +28,3 @@ class BankingRecord
    return self.balance
   def setBalance(self, _Bal)
 	self.balance = _Bal
-}
