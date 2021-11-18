@@ -30,10 +30,10 @@ class AES
   def decrypt(self, strToDecrypt, secret)
       try
         setKey(secret)
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING")
+        cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING")
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
         return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)))
-	  except
-	    print("Log excpetion: ", sys.exc_info()[0])
+	  except(Exception e)
+	    print("Error while dencrypting: ", e.toString())
         return null
 
