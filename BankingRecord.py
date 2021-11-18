@@ -12,12 +12,20 @@ class BankingRecord
 	  return self.accountNumber
     def setAccountNumber(self, _ActN)
 	  self.accountNumber = _ActN
-    def getAccountType() {return accountType
-    def setAccountType(String _ActT) {this.accountType = _ActT
-    def getTransactionType() {return transactionType
-    def petTransactionType(String _TraT) {this.transactionType = _TraT
-    def getTransactionAmount() {return transactionAmount
-    def setTransactionAmount(String _TraA) {this.transactionAmount = _TraA
-    def getBalance() {return balance
-    def setBalance(String _Bal) {this.balance = _Bal
+    def getAccountType(self) 
+	  return self.accountType
+    def setAccountType(self, _ActT)
+	  self.accountType = _ActT
+    def getTransactionType(self) 
+	  return self.transactionType
+    def petTransactionType(self, _TraT)
+	  self.transactionType = _TraT
+    def getTransactionAmount(self)
+	  return self.transactionAmount
+    def setTransactionAmount(self, _TraA)
+	  self.transactionAmount = _TraA
+    def getBalance(self)
+	  return self.balance
+    def setBalance(self, _Bal)
+	  self.balance = _Bal
 }
