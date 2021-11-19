@@ -16,9 +16,9 @@ class Block:
    return calculatedhash   
 
   def mineBlock(self, difficulty): 
-   target = StringUtil.getDificultyString(difficulty); 
-   while(!hash.substring( 0, difficulty).equals(target)):
-     self.nonce++
+   #target = StringUtil.getDificultyString(difficulty); 
+   while not(hash[0: difficulty] == "0000"):
+     self.nonce = self.nonce + 1
      self.hash = calculateHash();
    print("Block Mined!!! : ", self.hash)
 
