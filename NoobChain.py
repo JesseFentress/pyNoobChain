@@ -38,7 +38,7 @@ def __main__(self) {
    print(blockchainJson);
 
         for(int i = 0; i < blockchain.size(); i++){
-            System.out.println("\nDecrypted block data for block #" + (i+1) + ": " + AES.decrypt(blockchain.get(i).getData(), secretKey));
+            print("\nDecrypted block data for block #" + (i+1) + ": " + AES.decrypt(blockchain.get(i).getData(), secretKey))
         }
     }
 
@@ -46,24 +46,20 @@ def __main__(self) {
   def isChainValid(self)
     currentBlock;
     previousBlock;
-    hashTarget = new String(new char[difficulty]).replace('\0', '0');
-    for(int i=1; i < blockchain.size(); i++) {
-     currentBlock = blockchain.get(i);
-     previousBlock = blockchain.get(i-1);
-     if(!currentBlock.hash.equals(currentBlock.calculateHash()) )
-       System.out.println("Current Hashes not equal")
-       return false
-            if(!previousBlock.hash.equals(currentBlock.previousHash) ) {
-                System.out.println("Previous Hashes not equal");
-                return false;
-            }
-            if(!currentBlock.hash.substring( 0, difficulty).equals(hashTarget)) {
-                System.out.println("This block hasn't been mined");
-                return false;
-            }
-
-        }
-        return true
+    hashTarget = new String(new char[difficulty]).replace('\0', '0')
+    for(int i=1; i < blockchain.size(); i++)
+      currentBlock = blockchain.get(i)
+      previousBlock = blockchain.get(i-1)
+      if(!currentBlock.hash.equals(currentBlock.calculateHash()) )
+        print("Current Hashes not equal")
+        return false
+      if(!previousBlock.hash.equals(currentBlock.previousHash) ) 
+        print("Previous Hashes not equal")
+        return false;
+     if(!currentBlock.hash.substring( 0, difficulty).equals(hashTarget))
+        print("This block hasn't been mined")
+        return false
+     return true
 
   def addBlock(newBlock)
     newBlock.mineBlock(difficulty)
