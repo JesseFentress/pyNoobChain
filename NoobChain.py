@@ -44,10 +44,7 @@ class NoobChain:
      #print("\nDecrypted block data for block #" + (i+1) + ": " + AES.decrypt(blockchain.get(i).getData(), secretKey))
 
   def isChainValid(self):
-    currentBlock
-    previousBlock
     #hashTarget = new String(new char[difficulty]).replace('\0', '0')
-    #for(int i=1; i < blockchain.len(); i++)
 	for index, b in enumerate(blockchain):
       currentBlock = b
       previousBlock = b[index-1]
