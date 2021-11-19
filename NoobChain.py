@@ -1,14 +1,17 @@
 import BankingRecord
+import Block
 import AES
 import json
 
+
 class NoobChain:
+
+  blockchain = []
+  difficulty = 5
+
   def __init__(self, blockchain, difficulty):
     self.blockchain = blockchain
     self.difficulty = difficulty
-
-#ArrayList<Block> blockchain = new ArrayList<Block>();
-#public static int difficulty = 5
 
   def __main__(self):
    secretKey = "this is a password";
@@ -21,7 +24,7 @@ class NoobChain:
    bankRecord.setBalance("200")
    jsonBank = json.dumps(bankRecord)
    encryptedBankRecord = AES.encrypt(jsonBank, secretKey) 
-   addBlock(new Block(encryptedBankRecord, "0"))
+   addBlock(Block(encryptedBankRecord, "0"))
 
    print("Trying to Mine block 2... ")
    bankRecord2 = BankingRecord()
@@ -32,30 +35,29 @@ class NoobChain:
    bankRecord2.setBalance("2000")
    jsonBank = json.dumps(bankRecord2)
    encryptedBankRecord2 = AES.encrypt(jsonBank, secretKey)
-   addBlock(new Block(encryptedMedicalRecord2,blockchain.get(blockchain.size()-1).hash))
+   addBlock(Block(encryptedBankRecord2,blockchain.get(blockchain.len()-1).hash))
 
    print("\nBlockchain is Valid: " + isChainValid())
    blockchainJson = StringUtil.getJson(blockchain)
    print("\nThe block chain: ", blockchainJson);
-   for(int i = 0; i < blockchain.size(); i++):
-     print("\nDecrypted block data for block #" + (i+1) + ": " + AES.decrypt(blockchain.get(i).getData(), secretKey))
+   #for( x in blockchain):
+     #print("\nDecrypted block data for block #" + (i+1) + ": " + AES.decrypt(blockchain.get(i).getData(), secretKey))
 
-
-    //method for checking the integriy of the blockchain
   def isChainValid(self):
     currentBlock
     previousBlock
-    hashTarget = new String(new char[difficulty]).replace('\0', '0')
-    for(int i=1; i < blockchain.size(); i++)
-      currentBlock = blockchain.get(i)
-      previousBlock = blockchain.get(i-1)
-      if(!currentBlock.hash.equals(currentBlock.calculateHash()) )
+    #hashTarget = new String(new char[difficulty]).replace('\0', '0')
+    #for(int i=1; i < blockchain.len(); i++)
+	for index, b in enumerate(blockchain):
+      currentBlock = b
+      previousBlock = b[index-1]
+      if(not(currentBlock.hash.equals(currentBlock.calculateHash()) )
         print("Current Hashes not equal")
         return false
-      if(!previousBlock.hash.equals(currentBlock.previousHash) ) 
+      if(not(previousBlock.hash.equals(currentBlock.previousHash) ) 
         print("Previous Hashes not equal")
         return false;
-     if(!currentBlock.hash.substring( 0, difficulty).equals(hashTarget))
+     if(not(currentBlock.hash.substring( 0, difficulty).equals(hashTarget))
         print("This block hasn't been mined")
         return false
      return true
