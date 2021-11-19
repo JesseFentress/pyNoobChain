@@ -2,15 +2,15 @@ import BankingRecord
 import AES
 import json
 
-class NoobChain
-  def __init__(self, blockchain, difficulty)
+class NoobChain:
+  def __init__(self, blockchain, difficulty):
     self.blockchain = blockchain;
 	self.difficulty = difficulty
 
 #ArrayList<Block> blockchain = new ArrayList<Block>();
 #public static int difficulty = 5
 
-  def __main__(self) {
+  def __main__(self):
    secretKey = "this is a password";
    print("Trying to Mine block 1... ")
    bankRecord = BankingRecord()
@@ -42,9 +42,9 @@ class NoobChain
 
 
     //method for checking the integriy of the blockchain
-  def isChainValid(self)
-    currentBlock;
-    previousBlock;
+  def isChainValid(self):
+    currentBlock
+    previousBlock
     hashTarget = new String(new char[difficulty]).replace('\0', '0')
     for(int i=1; i < blockchain.size(); i++)
       currentBlock = blockchain.get(i)
