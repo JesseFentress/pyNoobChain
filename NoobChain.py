@@ -45,7 +45,7 @@ class NoobChain:
 
   def isChainValid(self):
     #hashTarget = new String(new char[difficulty]).replace('\0', '0')
-	for index, b in enumerate(blockchain):
+    for index, b in enumerate(blockchain):
       currentBlock = b
       previousBlock = b[index-1]
       if(not(currentBlock.hash.equals(currentBlock.calculateHash()) )
