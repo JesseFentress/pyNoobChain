@@ -1,5 +1,6 @@
 import BankingRecord
 import AES
+import json
 
 class NoobChain
   def __init__(self, blockchain, difficulty)
@@ -18,18 +19,18 @@ def __main__(self) {
   bankRecord.setTransactionType("Deposit")
   bankRecord.setTransactionAmount("100")
   bankRecord.setBalance("200")
-  jsonBank = gson.toJson(bankRecord)
+  jsonBank = json.dumps(bankRecord)
   encryptedBankRecord = AES.encrypt(jsonBank, secretKey) 
   addBlock(new Block(encryptedBankRecord, "0"))
 
   print("Trying to Mine block 2... ")
   bankRecord2 = BankingRecord()
   bankRecord2.setAccountNumber("1235")
-  bankRecord2.setAccountType("Savings")
+  bankRecord2.setAccountType("Checking")
   bankRecord2.setTransactionType("Deposit")
   bankRecord2.setTransactionAmount("1000")
   bankRecord2.setBalance("2000")
-  jsonBank = gson.toJson(bankRecord2)
+  jsonBank = json.dumps(bankRecord2)
   encryptedBankRecord2 = AES.encrypt(jsonBank, secretKey)
   addBlock(new Block(encryptedMedicalRecord2,blockchain.get(blockchain.size()-1).hash))
 
