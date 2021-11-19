@@ -4,8 +4,8 @@ import json
 
 class NoobChain:
   def __init__(self, blockchain, difficulty):
-    self.blockchain = blockchain;
-	self.difficulty = difficulty
+    self.blockchain = blockchain
+    self.difficulty = difficulty
 
 #ArrayList<Block> blockchain = new ArrayList<Block>();
 #public static int difficulty = 5
