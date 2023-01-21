@@ -1,39 +1,41 @@
+from Crypto.Random import get_random_bytes
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+from Crypto.Util.Padding import unpad
 
-import 
+class AESEncryptor:
 
-class AES
-  def __init__(self, secretKey, key)
-    self.secretKey = secretKey
-	self.key = key
+  def __init__(self, key: str):
+    self._key: str = key                                    # Encryption key
+    self._cipher = AES.new(self._key, AES.MODE_EAX)         # Encryption cipher
+    self._iv: bytes = get_random_bytes(16)                  # Initialization vector
 
-  def setKey(self, myKey)
-    MessageDigest sha = null
-     try
-       self.key = myKey.getBytes("UTF-8")
-       sha = MessageDigest.getInstance("SHA-1")
-       self.key = sha.digest(self.key)
-       self.key = Arrays.copyOf(self.key, 16)
-       self.secretKey = new SecretKeySpec(self.key, "AES")
-     except
-	   print("Log excpetion: ", sys.exc_info()[0])
-	 
-  def encrypt(self, strToEncrypt, secret)
-    try
-      setKey(secret)
-      cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
-      cipher.init(Cipher.ENCRYPT_MODE, secretKey)
-      return Base64.getEncoder().encodeToString(cipher.doFinal(strToEncrypt.getBytes("UTF-8")))
-   except(Exception e)
-      print("Error while encrypting: ", e.toString())
-      return null
+  def encrypt(self, data: bytes) -> bytes:
+    cipher = AES.new(self._key, AES.MODE_EAX, self._iv)
+    cipher_text = cipher.encrypt(pad(data, 16))
+    return cipher_text
 
-  def decrypt(self, strToDecrypt, secret)
-      try
-        setKey(secret)
-        cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING")
-        cipher.init(Cipher.DECRYPT_MODE, secretKey);
-        return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)))
-	  except(Exception e)
-	    print("Error while dencrypting: ", e.toString())
-        return null
+  def decrypt(self, encrypted_data: bytes) -> bytes:
+    cipher = AES.new(self._key, AES.MODE_EAX, self._iv)
+    data = unpad(cipher.decrypt(encrypted_data), 16)
+    return data
+  
 
+def main():
+  keyAES = b"keykeykeykeykeykeykeykeykeykeyke"
+  message = "Come over here Waston"
+  aes = AESEncryptor(keyAES)
+  
+  e = aes.encrypt(message.encode('utf=8'))
+  print(e) 
+  
+  d = aes.decrypt(e)
+  print(d)
+  
+  print(message == d.decode('utf-8'))
+  
+if __name__ == '__main__':
+  main()
+  
+    
+    
